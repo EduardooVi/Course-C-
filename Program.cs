@@ -1,28 +1,42 @@
 ﻿using System;
+using System.Globalization;
 
-namespace ConversaoImplicitaeCasting
-{ 
-    public class Program
+namespace MyApp
+{
+    internal class Program
     {
         static void Main(string[] args)
         {
-            double a;
-            float b;
-            int c;
-            int d = 5;
-            int e = 2;
-            double resultado = (double)d / e;
+            char genero = 'F';
+            int idade = 32;
+            double saldo = 10.35784;
+            string nome = "Maria";
 
-            Console.WriteLine(resultado);
-            Console.WriteLine("\n\n\n\n");
+            Console.WriteLine("{0} tem {1} anos e tem saldo igual a {2:F2} reais", nome, idade, saldo);
+            Console.WriteLine($"{nome} tem {idade} anos e tem saldo igual a {saldo:F2} reais");
+            Console.WriteLine(nome + " tem " + idade + " anos e tem saldo igual a " + saldo.ToString("F2", CultureInfo.InvariantCulture) + " reais");
 
-            a = 5.1;
-            b = (float)a;
-            c = (int)a;
 
-            Console.WriteLine(a);
-            Console.WriteLine(b);
-            Console.WriteLine(c);
+            Console.WriteLine("\n\n\n\n\n");
+
+
+            Console.Write("Bom dia!");
+            Console.WriteLine("Boa tarde!"); 
+            Console.WriteLine("Boa noite!"); 
+            Console.WriteLine("---------------");
+
+            Console.WriteLine(genero);
+            Console.WriteLine(idade);
+            Console.WriteLine(saldo);
+
+            //forma de controlar a quantidade de casas decimais mostradas no console, F2 = 2 casas decimais
+            Console.WriteLine(saldo.ToString("F2"));
+
+            Console.WriteLine(nome);
+
+            //forma de desconsiderar formatação de paises, nesse caso estamos trocando a virgula como separador em numeros pelo ponto como separador
+            //Necessario usar o "Using System.Globalization;"
+            Console.WriteLine(saldo.ToString("F4", CultureInfo.InvariantCulture)); 
         }
     }
 }
